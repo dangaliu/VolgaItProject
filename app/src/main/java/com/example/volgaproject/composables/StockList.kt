@@ -35,7 +35,7 @@ fun StockList(list: SnapshotStateList<StockAndPrice>) {
                     price = item.price ?: 0.0
                 )
             )
-            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.height(8.dp))
         }
     }
     val visibleIndexesList = listState.layoutInfo.visibleItemsInfo

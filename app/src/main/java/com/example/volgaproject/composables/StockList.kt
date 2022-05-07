@@ -1,6 +1,5 @@
 package com.example.volgaproject.composables
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -8,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
@@ -43,14 +41,13 @@ fun StockList(list: SnapshotStateList<StockAndPrice>) {
     for (i in visibleIndexesList) {
         visibleIndexes.add(i.index)
     }
-    val counter = remember { mutableStateOf(0) }
+
     if (stockAndPrices.size > 0) {
         visibleIndexesList.forEach {
             if (!(items[it.index].isSend)) {
                 subscribeSymbol(items[it.index].stock)
                 subscribedSymbols.add(it.index)
                 println("sub")
-                counter.value++
                 items[it.index].isSend = true
             }
         }
@@ -62,7 +59,6 @@ fun StockList(list: SnapshotStateList<StockAndPrice>) {
                 unsubscribeSymbol(items[it].stock)
                 iterator.remove()
                 println("unsub")
-                counter.value--
                 items[it].isSend = false
             }
         }

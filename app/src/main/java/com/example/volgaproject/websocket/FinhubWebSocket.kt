@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 var mWebSocket: WebSocket? = null
 var stockAndPrices = mutableStateListOf<StockAndPrice>()
-val apiKey = "c9ql2viad3ibg4fja8t0"
+val apiKey = "c9r87vqad3i8g2roips0"
 fun connectionWebSocket() {
     val httpClient = OkHttpClient.Builder()
         .pingInterval(40, TimeUnit.SECONDS)
